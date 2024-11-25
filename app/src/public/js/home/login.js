@@ -2,7 +2,7 @@
 
 const id = document.querySelector('#id'),
       psword = document.querySelector('#psword'),
-      loginBtn = document.querySelector('button');
+      loginBtn = document.querySelector('#button');
 
 loginBtn.addEventListener('click', login);
 
@@ -18,5 +18,12 @@ function login(){
       "Content-type" : "application/json"
     },
     body : JSON.stringify(req)
+  }).then(res => res.json())
+  .then(res => {
+    if(res.success){
+      location.href = "/";
+    }else{
+      alert(res.msg);
+    }
   })
 }
